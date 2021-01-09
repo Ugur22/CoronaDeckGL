@@ -87,9 +87,9 @@ export default class App extends React.Component {
   fetchData() {
     axios.all([
       axios.get('https://corona.lmao.ninja/v2/countries?allowNull=false'),
-      axios.get('https://api.smartable.ai/coronavirus/stats/CA', config),
-      axios.get('https://api.smartable.ai/coronavirus/stats/US', config),
-      axios.get('https://api.smartable.ai/coronavirus/stats/CN', config),
+      axios.get('https://coronavirus-smartable.p.rapidapi.com/stats/v1/CA/', config),
+      axios.get('https://coronavirus-smartable.p.rapidapi.com/stats/v1/US/', config),
+      axios.get('https://coronavirus-smartable.p.rapidapi.com/stats/v1/CN/', config),
     ]).then(axios.spread((World, canada, USstates, china) => {
       
       let statesData = USstates.data.stats.breakdowns || [];

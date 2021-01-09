@@ -43,7 +43,7 @@ export default class Detailgraph extends Component {
     }
 
     getProvince = (province) => {
-        return axios.get(`https://api.smartable.ai/coronavirus/stats/${province}`, config);
+        return axios.get(`https://coronavirus-smartable.p.rapidapi.com/stats/v1/${province}/`, config);
     }
 
     getYesterday = (array, index, dataType, location) => {
@@ -106,7 +106,6 @@ export default class Detailgraph extends Component {
                         }
                         dataType = dataType.charAt(0).toLowerCase() + dataType.slice(1);
                         this.getYesterday(array, index, dataType, province);
-                        console.log(dataType);
                         return {
                             Cases: cases,
                             rate: rate.toFixed(2),
@@ -117,11 +116,10 @@ export default class Detailgraph extends Component {
                     }, this);
 
                 }
-                data = data.filter(item => (item.Cases !== 0 && item.rate !== 0 && item.rate && item.dayValue > 0 && item.date !== "2020-06-24T00:00:00Z" && item.date !== "2020-06-25T00:00:00Z"));
+                data = data.filter(item => (item.Cases !== 0 && item.rate !== 0 && item.rate && item.dayValue > 0 && item.date !== "2020-06-24T00:00:00Z" && item.date !== "2020-06-25T00:00:00Z" && item.date !== "2020-08-11T00:00:00Z"));
                 const amount = data.map((a) => a.dayValue);
                 maxDayValue = Math.max(...amount);
                 minDayValue = Math.min(...amount);
-                console.log(data);
 
                 this.setState({
                     data: data
