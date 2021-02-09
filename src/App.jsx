@@ -86,7 +86,7 @@ export default class App extends React.Component {
 
   fetchData() {
     axios.all([
-      axios.get('https://corona.lmao.ninja/v2/countries?allowNull=false'),
+      axios.get('https://disease.sh/v3/covid-19/countries?allowNull=false'),
       axios.get('https://coronavirus-smartable.p.rapidapi.com/stats/v1/CA/', config),
       axios.get('https://coronavirus-smartable.p.rapidapi.com/stats/v1/US/', config),
       axios.get('https://coronavirus-smartable.p.rapidapi.com/stats/v1/CN/', config),
